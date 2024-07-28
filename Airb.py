@@ -5,68 +5,22 @@ import pandas as pd
 import os
 from PIL import Image
 import warnings
-import json
 
 warnings.filterwarnings('ignore')
-st.set_page_config(page_title="AirBnb- Data Analysis by Premila.M!!!", page_icon=":bar_chart:", layout="wide")
-# **********************************************************************************************************
-# Define custom CSS to change the background color
 
-custom_css = """
-<style>
-body {
-    background-color: #6F38AD; /* Set your desired background color here */
-}
-</style>
-"""
+st.set_page_config(page_title="AirBnb-Analysis by Premila Mohanasundaram!!!", page_icon=":bar_chart:", layout="wide")
 
-# Inject the custom CSS into the Streamlit app
-st.markdown(custom_css, unsafe_allow_html=True)
-
-# *********************************************************************************************************************************************
-
-# Streamlit Dashboard UI
-
-file_path1 = r"C:\Users\Admin\projects\Airbnb\\guvi pic.png"
-file_path2 = r"C:\Users\Admin\projects\Airbnb\\Airbnb-image.jpg"
-
-# Open the images
-
-image1 = Image.open(file_path1)
-image2 = Image.open(file_path2)
-
-# Display the Guvi image and Title
-st.title('**GUVI PROJECT**')
-st.write("********************************")
-st.image(image1, caption='', width=300)
-
-# Display the Airbnb image and Title
-
-st.title(":bar_chart: :blue[airbnb- DATA ANALYSIS]:sunglasses:  ")
+st.title(":bar_chart:   AirBnb-Data Analysis")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
-st.image(image2, caption='', use_column_width=True)
-
-# ***********************************************************************************************************************************************
-
-# Converting json to csv
-# Load JSON file
-with open(r'C:\Users\Admin\projects\airbnb\data.json') as f:
-    data = json.load(f)
-
-# Convert JSON to DataFrame
-df = pd.DataFrame(data)
-
-# Save DataFrame to CSV
-df.to_csv('airdata.csv', index=False)
 
 # with st.headbar:
 SELECT = option_menu(
     menu_title=None,
-    options=["About AirBnb", "Getting more information from Data", "How to Contact Us"],
+    options=["Home", "Explore Data", "Contact"],
     icons=["house", "bar-chart", "at"],
     default_index=2,
     orientation="horizontal",
-    styles={"container": {"padding": "0!important", "background-color": "Pink", "size": "cover", "width": "100"},
+    styles={"container": {"padding": "0!important", "background-color": "white", "size": "cover", "width": "100"},
             "icon": {"color": "black", "font-size": "20px"},
 
             "nav-link": {"font-size": "20px", "text-align": "center", "margin": "-2px", "--hover-color": "#6F36AD"},
@@ -74,24 +28,24 @@ SELECT = option_menu(
 
 #----------------Home----------------------#
 
-if SELECT == "About AirBnb":
- st.header('Airbnb')
- st.subheader("Airbnb is an American San Francisco-based company operating an online marketplace for short- and long-term homestays and experiences. The company acts as a broker and charges a commission from each booking. The company was founded in 2008 by Brian Chesky, Nathan Blecharczyk, and Joe Gebbia. Airbnb is a shortened version of its original name, AirBedandBreakfast.com. The company is credited with revolutionizing the tourism industry, while also having been the subject of intense criticism by residents of tourism hotspot cities like Barcelona and Venice for enabling an unaffordable increase in home rents, and for a lack of regulation.")
+if SELECT == "Home":
+
+ st.header('Airbnb Data Analysis')
+ st.subheader("Airbnb is an AmericData n San Francisco-based company operating an online marketplace for short- and long-term homestays and experiences. The company acts as a broker and charges a commission from each booking. The company was founded in 2008 by Brian Chesky, Nathan Blecharczyk, and Joe Gebbia. Airbnb is a shortened version of its original name, AirBedandBreakfast.com. The company is credited with revolutionizing the tourism industry, while also having been the subject of intense criticism by residents of tourism hotspot cities like Barcelona and Venice for enabling an unaffordable increase in home rents, and for a lack of regulation.")
  st.subheader('Skills take away From This Project:')
- st.subheader('Python Scripting, Data Preprocessing, Visualization, EDA, Streamlit and PowerBI')
+ st.subheader('Python Scripting, Data Preprocessing, Visualization, EDA, Streamlit, MongoDb, PowerBI or Tableau')
  st.subheader('Domain:')
  st.subheader('Travel Industry, Property management and Tourism')
 
-
-if SELECT == "Getting more information from Data":
+if SELECT == "Explore Data":
  fl = st.file_uploader(":file_folder: Upload a file", type=(["csv", "txt", "xlsx", "xls"]))
  if fl is not None:
     filename = fl.name
     st.write(filename)
     df = pd.read_csv(filename, encoding="ISO-8859-1")
  else:
-    os.chdir(r"C:\Users\Admin\Projects\airbnb")
-    df = pd.read_csv(r'C:\Users\Admin\Projects\airbnb\data.csv')
+    os.chdir(r"C:\Users\Admin\projects\Airbnb")
+    df = pd.read_csv("Airbnb NYC 2019.csv", encoding="ISO-8859-1")
 
  st.sidebar.header("Choose your filter: ")
 
@@ -189,22 +143,22 @@ if SELECT == "Getting more information from Data":
 
 # ----------------------Contact---------------#
 
-if SELECT == "How to Contact Us":
+if SELECT == "Contact":
     Name = (f'{"Name :"}  {"Premila Mohanasundaram"}')
-    mail = (f'{"Mail :"}  {"Premilamohandharani@gmail.com"}')
-    description = "An Architect of Data Engineering !"
+    mail = (f'{"Mail :"}  {"premilamohanharani@gmail.com"}')
+    description = " AirBnb Data Analysis Project Creator"
     social_media = {
-        "Youtube": "https://youtu.be/QKSqy4lXcTA?si=GVyC7RzArboKtlmL",
-        "GITHUB": "https://github.com/StellarDivaPremi/AirBnb-Guvi-Project.git",
-        "LINKEDIN": "https://www.linkedin.com/in/premila-mohanasundaram-7a703a46/"}
+        "Youtube": "https://youtu.be/zSHhbbkMGVM",
+        "GITHUB": "https://github.com/StellarDivaPremi/AirBnb",
+        "LINKEDIN": "linkedin.com/in/premila-mohanasundaram-7a703a46/"}
 
     col1, col2 = st.columns(2)
-    col1.image(Image.open(r"C:\Users\Admin\projects\airbnb\aircouples.jpg"), width=550)
+    col1.image(Image.open(r"C:\Users\Admin\projects\airbnb\guvi.png"), width=300)
 
-    with col2:
+    with col2: 
         st.header('Airbnb Data Analysis')
         st.subheader(
-            "This project aims to analyze Airbnb data using JASON Data, Pyhon , streamlit, perform data cleaning and preparation, develop interactive geospatial visualizations, and create dynamic plots to gain insights into pricing variations, availability patterns, and location-based trends.")
+            "This project aims to analyze Airbnb data using Mongodb Atlas, perform data cleaning and preparation, develop interactive geospatial visualizations, and create dynamic plots to gain insights into pricing variations, availability patterns, and location-based trends.")
         st.write("---")
         st.subheader(Name)
         st.subheader(mail)
